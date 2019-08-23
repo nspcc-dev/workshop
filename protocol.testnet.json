@@ -1,0 +1,61 @@
+{
+  "ApplicationConfiguration": {
+    "RPCPort": 20332,
+    "NodePort": 20333,
+    "SslCert": "",
+    "SslCertPassword": "",
+    "UriPrefix": [
+      "http://*:20332"
+    ],
+    "WsPort": 20334,
+    "BootstrapName": "testnet",
+    "BootstrapFiles": "https://s3.us-east-2.amazonaws.com/cityofzion/bootstrap_latest",
+    "DebugStorage": 1,
+    "AcceptIncomingPeers": false,
+    "CompilerNep8": false,
+    "RestServer": "neo.api.REST.RestApi.RestApi",
+    "RPCServer": "neo.api.JSONRPC.JsonRpcApi.JsonRpcApi",
+    "Database": {
+        "Blockchain": {
+            "skip_version_check": false,
+            "DataDirectoryPath": "Chains/SC234",
+            "backend": "neo.Storage.Implementation.LevelDB.LevelDBImpl.LevelDBImpl"},
+        "Notification": {
+            "NotificationDataPath": "Chains/Test_Notif",
+            "backend": "neo.Storage.Implementation.LevelDB.LevelDBImpl.LevelDBImpl"},
+        "DebugStorage": {
+            "DebugStoragePath": "Chains/debugstorage",
+            "backend": "neo.Storage.Implementation.LevelDB.LevelDBImpl.LevelDBImpl"}
+    }
+  },
+  "ProtocolConfiguration": {
+    "AddressVersion": 23,
+    "Magic": 56753,
+    "SeedList": [
+      "85.143.219.77:20333",
+      "85.143.219.77:20334",
+      "85.143.219.77:20335",
+      "85.143.219.77:20336"
+    ],
+    "RPCList": [
+      "85.143.219.77:30333",
+      "85.143.219.77:30334",
+      "85.143.219.77:30335",
+      "85.143.219.77:30336"
+    ],
+    "StandbyValidators": [
+       "02b3622bf4017bdfe317c58aed5f4c753f206b7db896046fa7d774bbc4bf7f8dc2",
+       "02103a7f7dd016558597f7960d27c516a4394fd968b9e65155eb4b013e4040406e",
+       "03d90c07df63e690ce77912e10ab51acc944b66860237b608c4f8f8309e71ee699",
+       "02a7bc55fe8684e0119768d104ba30795bdcc86619e864add26156723ed185cd62"
+    ],
+    "SystemFee": {
+      "EnrollmentTransaction": 0,
+      "IssueTransaction": 0,
+      "PublishTransaction": 0,
+      "RegisterTransaction": 0,
+      "InvocationTransaction": 0,
+      "ContractTransaction": 0
+    }
+  }
+}
