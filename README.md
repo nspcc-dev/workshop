@@ -69,7 +69,7 @@ neo> sc debugstorage on
 ```
 
 
-## Импорт кошелька для Neo Local privnet
+## Импорт кошелька для Neo privnet
 
 Теперь откроем кошелек, чтобы оплачивать транзакции в сети: `wallet open neo-privnet.sample.wallet` (пароль `coz`). `neo-privnet.sample.wallet` – это относительный путь к файлу с кошельком. 
 
@@ -96,11 +96,14 @@ sc build workshop/contracts/master.py
 
 sc build workshop/contracts/user_contract.py
 
+sc build workshop/contracts/user_contract_test.py
+
+
 sc deploy workshop/contracts/master.avm True True True 0710 05 --fee=0.1
 
 sc deploy workshop/contracts/user_contract.avm True True True 0710 05 --fee=0.1
 
-sc deploy workshop/contracts/user2.avm True True True 0710 05 --fee=0.1
+sc deploy workshop/contracts/user_contract_test.avm True True True 0710 05 --fee=0.1
 
 ```
 
@@ -111,9 +114,9 @@ search contract <Name>
 Вызовем контракт зарегистрировав два контракта-игрока (адрес в опциях без '0x':
 ```
 
-sc invoke 0x63c7cb5299c54910b23f10cff35689eff62b813c Register [b'd8a741796e19c83db69bd8806bcc50857dec38ed']
+sc invoke 0x63c7cb5299c54910b23f10cff35689eff62b813c Register [b'93b8354f27c0757e865a3940787622fe6e32355d']
 
-sc invoke 0x63c7cb5299c54910b23f10cff35689eff62b813c Register [b'bbb37941e830ca130e6d47cda5b812e991f010fb']
+sc invoke 0x63c7cb5299c54910b23f10cff35689eff62b813c Register [b'bdd69f3dfd1492b3434303d4bc0da1328fb68492']
 
 
 ```
@@ -122,7 +125,8 @@ sc invoke 0x63c7cb5299c54910b23f10cff35689eff62b813c Register [b'bbb37941e830ca1
 
 ```
 
-sc invoke 0x63c7cb5299c54910b23f10cff35689eff62b813c Battle [b'd8a741796e19c83db69bd8806bcc50857dec38ed', b'bbb37941e830ca130e6d47cda5b812e991f010fb']
+sc invoke 0x63c7cb5299c54910b23f10cff35689eff62b813c Battle [b'93b8354f27c0757e865a3940787622fe6e32355d', b'bdd69f3dfd1492b3434303d4bc0da1328fb68492', 0, 0] 
+
 
 ```
 
@@ -133,111 +137,9 @@ docker pull nspccru/cc-game-ui
 docker run -p 3000:80 --rm nspccru/cc-game-ui
 ```
 
+Ввести в поле идентификатор выполненной транзакции:
+[I 190824 22:32:40 EventHub:62] [SmartContract.Execution.Success][4170] [63c7cb5299c54910b23f10cff35689eff62b813c] [tx d5d62bcf102bd6adfba033c63b45630e794cff536f1dd18bbdf8f3d19a493f8d] {'type': 'Array', 'value': [{'type': 'Integer', 'value': '1'}]}
 
-
-
-
-
-## Альтернативные способ - создание кошелька, вместо готового
-
-```
-
-neo> wallet help
-
-```
-
-```
-
-neo> wallet create wallet_test.wallet
-
-[password]> **********
-
-[password again]> **********
-
-[I 190801 18:41:30 UserWallet:480] Script hash b"\x99\x07Cg\xfd\x8e)\xee\x94\x88'5+#gt\x0b\xc6s\x1c" <class 'bytes'>
-
-Wallet {
-
-"path": "wallet_test.wallet",
-
-"addresses": [
-
-{
-
-"address": "AVj1jWdbmwvKR4VHAVouMEjCLYK258DXJM",
-
-"script_hash": "99074367fd8e29ee948827352b2367740bc6731c",
-
-"tokens": null
-
-}
-
-],
-
-"height": 0,
-
-"percent_synced": 0,
-
-"synced_balances": [],
-
-"public_keys": [
-
-{
-
-"Address": "AVj1jWdbmwvKR4VHAVouMEjCLYK258DXJM",
-
-"Public Key": "02e46e1972268e45edf95906adbae0355bf323d7606d9dbea43e2f5da72ad36bc4"
-
-}
-
-],
-
-"tokens": [],
-
-"claims": {
-
-"available": "0.0",
-
-"unavailable": "0.0"
-
-}
-
-}
-
-Pubkey b'02e46e1972268e45edf95906adbae0355bf323d7606d9dbea43e2f5da72ad36bc4'
-
-neo>
-
-```
-
-To remove the pre-created address:
-
-```
-
-neo> wallet address delete AVj1jWdbmwvKR4VHAVouMEjCLYK258DXJM
-
-Deleted address AVj1jWdbmwvKR4VHAVouMEjCLYK258DXJM
-
-```
-
- 
-
-Import default address with all GAS in the privnet:
-
- 
-
-```
-
-neo> wallet import wif KxDgvEKzgSBPPfuVfw67oPQBSjidEiqTHURKSDL1R7yGaGYAeYnr
-
-Imported key: KxDgvEKzgSBPPfuVfw67oPQBSjidEiqTHURKSDL1R7yGaGYAeYnr
-
-Pubkey: 031a6c6fbbdf02ca351745fa86b9ba5a9452d785ac4f7fc2b7548ca2a46c4fcf4a
-
-Address: AK2nJJpJr6o664CWJKi1QRXjqeic2zRp8y
-```
- 
-
-```
+Перейти на localhost:3000 и введя транзакцию - увидеть результаты боя, полученные из блокчейна.
 
 
