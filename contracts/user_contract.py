@@ -52,14 +52,9 @@ def Main(operation, args):
             battle_round = args[1]
             players_data = Deserialize(args[2])
 
-            print("ROUND:")
-            print(battle_round)
-
             # Players Data:
             # { player_1: { 'hp': 10, 'repair_drone': 1, 'missile': 1 }, player_2: { 'hp': 10, 'repair_drone': 1, 'missile': 1 } }    
-            # Battle Story:
-            # [ {'battle_round': battle_round, player_1: action_player_1, player_2: action_player_2} ]
-          
+
             # Actions types and targets for selection
             action_limit = 1
             action_types = ["attack", "defence", "repair", "missile"]
@@ -74,7 +69,7 @@ def Main(operation, args):
                 action_types.append("missile")
                 action_limit += 1
             """     
-            #if (battle_round == 1):
+
             selected_action = "attack"
             target_list = ["body"]
 
