@@ -135,9 +135,10 @@ neo> sc debugstorage on
 
  
 ###  Развернуть конкурсный веб-интерфейс
-docker pull nspccru/cc-game-ui
-docker compose up
-
+```
+docker pull nspccru/cc-game-ui:1.2
+docker run -p 3000:80 --rm nspccru/cc-game-ui:1.2
+```
 
 ## Импорт кошелька для Neo Local privnet
 
