@@ -248,14 +248,20 @@ Address: AK2nJJpJr6o664CWJKi1QRXjqeic2zRp8y
 
 ## Импорт смарт-контракта
 
-Скопируем код контракта внутрь контейнера. Скомпилируем и задеплоим контракт:
+Скопируем код контракта внутрь контейнера. 
+
+```
+sudo docker cp sc.py neo-python:/neo-python
+```
+
+Скомпилируем и задеплоим контракт.
 
 ```
 sc build help
 
-sc build SC/contract.py
+sc build sc.py
 
-sc deploy SC/contract.avm True True True 0710 05 --fee=0.1
+sc deploy sc.avm True True True 0710 05 --fee=0.1
 
 ```
 
